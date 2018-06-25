@@ -1,7 +1,8 @@
 ﻿<Properties StartupItem="Assembly-CSharp.csproj">
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="Unity.Instance.Unity Editor" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\gamePlayScript.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\EnemyMakerScript.cs">
     <Files>
+      <File FileName="Assets\EnemyMakerScript.cs" Line="20" Column="1" />
       <File FileName="Assets\gamePlayScript.cs" Line="37" Column="36" />
       <File FileName="Assets\OpenMainSceneScript.cs" Line="1" Column="1" />
     </Files>
