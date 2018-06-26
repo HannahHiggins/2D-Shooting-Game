@@ -7,6 +7,10 @@ public class gamePlayScript : MonoBehaviour {
 	public AudioClip gunShotClip;
 
 	public GameObject timerTextView;
+	public GameObject scoreTextView;
+	int roundsShot = 0;
+	int enemyKilled = 0;
+
 	public GameObject bazookaGo;
 	public GameObject crossHairGo;
 
@@ -16,6 +20,7 @@ public class gamePlayScript : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
+		scoreTextView.GetComponent<Text> ().text = enemyKilled.ToString () + " / " + roundsShot.ToString ();
 		gunShotAudioSource = gameObject.GetComponent<AudioSource> ();
 		InvokeRepeating ("timeCounterAction", 0, 1);
 	}
@@ -33,8 +38,17 @@ public class gamePlayScript : MonoBehaviour {
 	}
 
 	void shootAction(){
-		Debug.Log ("Shoot");
 		gunShotAudioSource.PlayOneShot (gunShotClip);
+		roundsShot++;
+
+		Vector2 dir = new Vector2 (crossHairGo.transform.position.x, crossHairGo.transform.position.y);
+		RaycastHit2D hit = Physics2D.Raycast (Camera.main.transform.position, dir);
+		if (hit.collider != null && hit.collider.gameObject != crossHairGo) {
+			enemyKilled++;
+			Destroy (hit.collider.gameObject);
+		}
+
+		scoreTextView.GetComponent<Text> ().text = enemyKilled.ToString () + " / " + roundsShot.ToString ();
 	}
 
 	// Update is called once per frame
