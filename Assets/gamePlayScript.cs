@@ -8,6 +8,8 @@ public class gamePlayScript : MonoBehaviour {
 	public AudioClip gunShotClip;
 	bool gameIsPaused = false;
 
+	public ParticleSystem muzzleFlashPar;
+
 	public GameObject timerTextView;
 	public GameObject scoreTextView;
 	int roundsShot = 0;
@@ -45,6 +47,7 @@ public class gamePlayScript : MonoBehaviour {
 
 	void shootAction(){
 		gunShotAudioSource.PlayOneShot (gunShotClip);
+		muzzleFlashPar.Emit (1);
 		roundsShot++;
 
 		Vector2 dir = new Vector2 (crossHairGo.transform.position.x, crossHairGo.transform.position.y);
